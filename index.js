@@ -1,7 +1,5 @@
 require("dotenv").config();
-const { Client, GatewayIntentBits } = require("discord.js");
-
-const { EmbedBuilder } = require('discord.js');
+const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 
 const rulesEmbed = new EmbedBuilder()
 .setTitle('📜 Rules')
@@ -91,34 +89,29 @@ value: 'Members placed on <@&1497906027319001222> will lose access to many serve
 }
 );
 
-
 const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
-    ]
+intents: [
+GatewayIntentBits.Guilds,
+GatewayIntentBits.GuildMessages,
+GatewayIntentBits.MessageContent
+]
 });
 
-client.on("ready", () => {
-    console.log(`Logged in as ${client.user.tag}`);
+client.on("clientReady", () => {
+console.log(Logged in as ${client.user.tag});
 });
 
 client.on("messageCreate", async message => {
 if (message.author.bot) return;
 
-```
 if (message.content === "!ping") {
-    message.reply("Pongeth. 👑");
+message.reply("Pongeth. 👑");
 }
 
 if (message.content === "!rules") {
-    await message.channel.send({ embeds: [rulesEmbed] });
-    await message.channel.send({ embeds: [warnSystemEmbed] });
+await message.channel.send({ embeds: [rulesEmbed] });
+await message.channel.send({ embeds: [warnSystemEmbed] });
 }
-```
-
 });
-
 
 client.login(process.env.DISCORD_TOKEN);
