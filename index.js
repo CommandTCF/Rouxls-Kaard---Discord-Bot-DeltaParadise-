@@ -13,12 +13,21 @@ client.on("ready", () => {
     console.log(`Logged in as ${client.user.tag}`);
 });
 
-client.on("messageCreate", message => {
-    if (message.author.bot) return;
+client.on("messageCreate", async message => {
+if (message.author.bot) return;
 
-    if (message.content === "!ping") {
-        message.reply("Pongeth. 👑");
-    }
+```
+if (message.content === "!ping") {
+    message.reply("Pongeth. 👑");
+}
+
+if (message.content === "!rules") {
+    await message.channel.send({ embeds: [rulesEmbed] });
+    await message.channel.send({ embeds: [warnSystemEmbed] });
+}
+```
+
 });
+
 
 client.login(process.env.DISCORD_TOKEN);
