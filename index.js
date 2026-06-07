@@ -98,7 +98,7 @@ GatewayIntentBits.MessageContent
 });
 
 client.on("clientReady", () => {
-console.log(Logged in as ${client.user.tag});
+console.log(`Logged in as ${client.user.tag}`);
 });
 
 client.on("messageCreate", async message => {
